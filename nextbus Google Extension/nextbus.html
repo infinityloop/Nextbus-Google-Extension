@@ -1,0 +1,100 @@
+
+<html>
+
+	<head>
+		<title>Nextbus Google Extension</title>
+		
+		<meta http-equiv="refresh" content="30" >
+		
+		<link rel="stylesheet", type="text/css", href="style.css">
+
+		<link rel="javascript functions", type="text/javascript", href="functions.js">
+		
+		<script type="text/javascript", language="JavaScript">
+		function loadXMLDoc(dname) {
+			if (window.XMLHttpRequest)
+			{
+				xhttp=new XMLHttpRequest();
+			}
+			else
+			{
+				xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhttp.open("GET",dname,false);
+			xhttp.send();
+			return xhttp.responseXML;
+		}
+		</script>
+		
+	</head>
+
+	<body> 
+		<div id="header">Nextbus!</div>
+		
+		<form name="boxForm">
+			<div id="boxArea">
+				<span>Route</span>
+				<select id="selectBox", name="routeBox"></select>
+
+				<div id="gap"> </div>
+				
+				<span>Direction</span>
+				<select id="selectBox", name="directionBox"></select>
+				
+				<div id="gap"> </div>
+				
+				<span>Stop</span>
+				<select id="selectBox", name="stopBox"></select>
+			</div> 
+		</form>
+		
+		<table border="0", cellspacing="0", align="center">
+			<tr>
+				<td id="predictionFirst">8</td>
+				<td id="predictionMinute">Minutes</td>
+			</tr>
+			
+			<tr>
+				<td id="predictionSecond">10</td>
+				<td id="predictionMinute">Minutes</td>
+			</tr>
+
+		<script type="text/javascript", language="JavaScript">
+			var route = new Array();
+			var direction = new Array();
+			var stop = new Array();
+			
+			for(var i=0; i<stop.length; i++) {
+				document.boxForm.stopBox.options[document.boxForm.stopBox.options.length] = new Option(stop[i]);
+			}
+			
+			var xmlRoute = new loadXMLDoc(
+								"http://www.nextbus.com/s/COM.NextBus.Servlets.XMLFeed?"+
+								"command=routeList"+
+								"&a=guelph");
+
+			var routes = xmlRoute.getElementsByTagName("route");
+			for(var i=0; i<routes.length; i++) {
+				var route = routes[i].getAttribute("title");
+				document.boxForm.routeBox.options[document.boxForm.routeBox.options.length] = new Option(route);
+			}
+			
+			xmlDirection = new loadXMLDoc(
+								"http://www.nextbus.com/s/COM.NextBus.Servlets.XMLFeed?" +
+								"command=routeConfig" +
+								"&a=guelph" +
+								"&r=" +
+								"01");
+								
+			var directions = xmlDirection.getElementsByTagName("direction");					
+								
+			for(var i=0; i<directions.length; i++) {
+				var direction = directions[i].getAttribute("title");
+				document.boxForm.directionBox.options[document.boxForm.directionBox.options.length] = new Option(direction);
+			}
+			
+		</script>
+			
+	</body>
+
+</html>

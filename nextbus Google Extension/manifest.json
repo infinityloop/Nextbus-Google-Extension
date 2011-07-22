@@ -1,0 +1,9 @@
+{
+  "name": "Nextbus Extension",
+  "version": "1.0",
+  "description": "An Extension for Nextbus.",
+  "browser_action": {
+    "default_icon": "icon.png",
+	"popup": "nextbus.html"
+  }
+}
