@@ -1,9 +1,20 @@
 {
   "name": "Nextbus Extension",
-  "version": "1.0",
+  "version": "0.5",
   "description": "An Extension for Nextbus.",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "/image/icon.png",
 	"popup": "nextbus.html"
-  }
+  },  
+    "permissions": [
+    "cookies", "tabs",
+    "*://*/*"
+  ],
+    "content_scripts": [
+    {
+      "matches": ["http://127.0.0.1/*", "*://*/*"],
+      "js": ["functions.js"]
+    }
+  ],
+  "background_page": "nextbus.html"
 }

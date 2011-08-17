@@ -1,100 +1,112 @@
-
+<!-- *****************************************
+Name: Nextbus Google Extension
+Author: Kelvin Lau
+Email: Kelvin.lau222@gmail.com
+Last Edited: 16/08/2011
+Date started: 22/07/2011
+Description: A basic nextbus google extension
+******************************************!-->
 <html>
 
 	<head>
 		<title>Nextbus Google Extension</title>
 		
-		<meta http-equiv="refresh" content="30" >
+		<meta http-equiv="refresh" content="30" > 
 		
 		<link rel="stylesheet", type="text/css", href="style.css">
-
-		<link rel="javascript functions", type="text/javascript", href="functions.js">
-		
-		<script type="text/javascript", language="JavaScript">
-		function loadXMLDoc(dname) {
-			if (window.XMLHttpRequest)
-			{
-				xhttp=new XMLHttpRequest();
-			}
-			else
-			{
-				xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-			}
-			xhttp.open("GET",dname,false);
-			xhttp.send();
-			return xhttp.responseXML;
-		}
-		</script>
-		
+				
 	</head>
 
 	<body> 
-		<div id="header">Nextbus!</div>
+		<div id="header">Guelph NextBus</div>
 		
 		<form name="boxForm">
 			<div id="boxArea">
 				<span>Route</span>
-				<select id="selectBox", name="routeBox"></select>
-
-				<div id="gap"> </div>
-				
+				<select id="routeBox" name="routeBox" onchange="getDirection(route, route.tag[document.boxForm.routeBox.options.selectedIndex], localStorage.direction, localStorage.stop); setNewLocalData()"   style="width:200px;margin:5px 0 5px 0;"></select>
+				<div id="gap"> </div>		
 				<span>Direction</span>
-				<select id="selectBox", name="directionBox"></select>
+				<select id="directionBox", name="directionBox" onchange="getStop(route, route.tag[routeBox.selectedIndex], directionBox.selectedIndex, localStorage.stop); setNewLocalData()" style="width:200px;margin:5px 0 5px 0;"></select>
 				
 				<div id="gap"> </div>
 				
 				<span>Stop</span>
-				<select id="selectBox", name="stopBox"></select>
+				<select id="stopBox", name="stopBox" onchange="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex]); setNewLocalData()" style="width:200px;margin:5px 0 5px 0;"></select>
 			</div> 
 		</form>
 		
-		<table border="0", cellspacing="0", align="center">
-			<tr>
-				<td id="predictionFirst">8</td>
-				<td id="predictionMinute">Minutes</td>
-			</tr>
-			
-			<tr>
-				<td id="predictionSecond">10</td>
-				<td id="predictionMinute">Minutes</td>
-			</tr>
 
+		<form name="tableForm" >
+			<table id="predictionArea" border="0", cellspacing="0", align="center">
+			
+				<tr>
+						<td id="arriving" colspan=2></td>
+				</tr>
+				<tr>
+					<td id="predictionFirst">Loading...</td>
+					<td id="predictionFirstMinute" tag="predictionFirstMinute"></td>
+				</tr>
+				
+				<tr>
+					<td id="predictionSecond"></td>
+					<td id="predictionSecondMinute"></td>
+				</tr></table>
+		</form>
+		
+		<img src="/image/refresh.png" height="20" width="20" id="refresh" 
+				onmouseover="this.src='/image/refresh1.png'"
+				onmouseout="this.src='/image/refresh.png'"
+				onclick="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex])"></div>
+
+		<script type="text/javascript", language="JavaScript", src="functions.js"></script>
+		
+				
 		<script type="text/javascript", language="JavaScript">
-			var route = new Array();
-			var direction = new Array();
-			var stop = new Array();
-			
-			for(var i=0; i<stop.length; i++) {
-				document.boxForm.stopBox.options[document.boxForm.stopBox.options.length] = new Option(stop[i]);
-			}
-			
-			var xmlRoute = new loadXMLDoc(
-								"http://www.nextbus.com/s/COM.NextBus.Servlets.XMLFeed?"+
-								"command=routeList"+
-								"&a=guelph");
+			var route = {
+				agency:[],
+				title:[],
+				tag:[], 
+				direction:[],
+				stop:[],
+				stopName:[],
+				prediction:[]
+				};
 
-			var routes = xmlRoute.getElementsByTagName("route");
-			for(var i=0; i<routes.length; i++) {
-				var route = routes[i].getAttribute("title");
-				document.boxForm.routeBox.options[document.boxForm.routeBox.options.length] = new Option(route);
+			/* Credits for function go to http://diveintohtml5.org/storage.html*/
+			function supports_html5_storage() {
+				try {
+					return 'localStorage' in window && window['localStorage'] !== null;
+				} catch (e) {
+					return false;
+					}
+}
+			function setNewLocalData() {
+				if (supports_html5_storage) {
+					localStorage.route = document.boxForm.routeBox.options.selectedIndex;
+					localStorage.direction = document.boxForm.directionBox.options.selectedIndex;
+					localStorage.stop = document.boxForm.stopBox.options.selectedIndex;
+				}
 			}
 			
-			xmlDirection = new loadXMLDoc(
-								"http://www.nextbus.com/s/COM.NextBus.Servlets.XMLFeed?" +
-								"command=routeConfig" +
-								"&a=guelph" +
-								"&r=" +
-								"01");
-								
-			var directions = xmlDirection.getElementsByTagName("direction");					
-								
-			for(var i=0; i<directions.length; i++) {
-				var direction = directions[i].getAttribute("title");
-				document.boxForm.directionBox.options[document.boxForm.directionBox.options.length] = new Option(direction);
+			if (supports_html5_storage) {
+				if(localStorage.route == null) {
+					localStorage.route='0';
+				}
+
+				if(localStorage.direction == null) {
+					localStorage.direction='0';
+				}
+
+				if(localStorage.stop == null) {
+					localStorage.stop='0';
+				}
 			}
+				
+			getRoute(route, localStorage.route, localStorage.direction, localStorage.stop);		
+			
 			
 		</script>
-			
+
 	</body>
 
 </html>

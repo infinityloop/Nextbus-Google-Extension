@@ -1,16 +1,18 @@
 body{	
 	width:200px;
 	overflow-x:hidden;
-	height:350px;
 	overflow-y:hidden;
+	height:350px;
 	margin:0;
 	padding:0;
 }
 
 #header{
 	text-align:center;
-	font-size:30px;
-	color:#000;
+	font:25px sans-serif;
+	color:#FFF;
+	background:#104510;
+	background-repeat:repeat-x;
 }
 
 #boxArea {
@@ -40,28 +42,62 @@ body{
 
 #predictionFirst {
 	text-align:left;
-	font-size:48px;
+	font:40px sans-serif;
 	font-weight:bold;
 	color:#000;
+	padding-left:15px;
 	vertical-align:bottom;
 }
 
 #predictionSecond {
-	text-align:left;
-	font-size:24px;
+	text-align:right;
+	font:24px sans-serif;
 	font-weight:bold;
 	color:#000;
 	line-height:0.8em;
+	padding-left:15px;
 	padding-bottom:10px;
 }
 
-#predictionMinute {
+#predictionFirstMinute {
 	text-align:left;
-	font-size:24px;
+	font:24px sans-serif;
 	font-weight:bold;
-	color:#000
+	color:#000;
 	line-height:0.8em;
 	vertical-align:bottom;
-	padding-left:15px;
+	padding-left:10px;
+	padding-right:10px;
 	padding-bottom:10px;
+}
+
+#predictionSecondMinute {
+	text-align:left;
+	font:24px sans-serif; 
+	font-weight:bold;
+	color:#000;
+	line-height:0.8em;
+	vertical-align:bottom;
+	padding-left:10px;
+	padding-right:10px;
+	padding-bottom:10px;
+}
+
+#arriving {
+	text-align:center;
+	font:32px sans-serif;
+	font-weight:bold;
+	color:#000;
+	line-height:0.8em;
+	vertical-align:bottom;
+	padding-bottom:10px;
+
+}
+
+#refresh {
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:20px;
+	height:20px;
 }
