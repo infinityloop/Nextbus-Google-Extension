@@ -11,7 +11,7 @@ Description: A basic nextbus google extension
 	<head>
 		<title>Nextbus Google Extension</title>
 		
-		<meta http-equiv="refresh" content="30" > 
+		<meta http-equiv="refresh" content="20" > 
 		
 		<link rel="stylesheet", type="text/css", href="style.css">
 				
@@ -23,15 +23,21 @@ Description: A basic nextbus google extension
 		<form name="boxForm">
 			<div id="boxArea">
 				<span>Route</span>
-				<select id="routeBox" name="routeBox" onchange="getDirection(route, route.tag[document.boxForm.routeBox.options.selectedIndex], localStorage.direction, localStorage.stop); setNewLocalData()"   style="width:200px;margin:5px 0 5px 0;"></select>
+				<select id="routeBox" name="routeBox" 
+							onchange="getDirection(route, route.tag[document.boxForm.routeBox.options.selectedIndex], localStorage.direction, localStorage.stop); setNewLocalData()"   
+							style="width:200px;margin:5px 0 5px 0;"></select>
 				<div id="gap"> </div>		
 				<span>Direction</span>
-				<select id="directionBox", name="directionBox" onchange="getStop(route, route.tag[routeBox.selectedIndex], directionBox.selectedIndex, localStorage.stop); setNewLocalData()" style="width:200px;margin:5px 0 5px 0;"></select>
+				<select id="directionBox", name="directionBox" 
+							onchange="getStop(route, route.tag[routeBox.selectedIndex], directionBox.selectedIndex, localStorage.stop); setNewLocalData()" 
+							style="width:200px;margin:5px 0 5px 0;"></select>
 				
 				<div id="gap"> </div>
 				
 				<span>Stop</span>
-				<select id="stopBox", name="stopBox" onchange="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex]); setNewLocalData()" style="width:200px;margin:5px 0 5px 0;"></select>
+				<select id="stopBox", name="stopBox" 
+							onchange="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex]); setNewLocalData()" 
+							style="width:200px;margin:5px 0 5px 0;"></select>
 			</div> 
 		</form>
 		
@@ -103,7 +109,7 @@ Description: A basic nextbus google extension
 			}
 				
 			getRoute(route, localStorage.route, localStorage.direction, localStorage.stop);		
-			
+
 			
 		</script>
 

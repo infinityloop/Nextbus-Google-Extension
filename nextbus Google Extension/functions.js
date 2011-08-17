@@ -148,7 +148,7 @@ function changePredictions (element, prediction) {
 		document.getElementById(element).innerHTML = "";
 		document.getElementById("predictionFirstMinute").innerHTML = "";
 		document.getElementById("predictionSecondMinute").innerHTML = "";
-		
+		chrome.browserAction.setBadgeText({text: ''});
 	}
 	
 	else if (prediction!=0 && prediction>0) {
@@ -163,7 +163,7 @@ function changePredictions (element, prediction) {
 		}
 		
 		document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
-		
+		chrome.browserAction.setBadgeText({text: prediction});
 	}
 	
 	else {
@@ -172,6 +172,8 @@ function changePredictions (element, prediction) {
 				document.getElementById("predictionFirstMinute").innerHTML = "";
 				document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
 	}
+	
+
 	
 }
 
