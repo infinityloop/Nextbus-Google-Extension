@@ -1,7 +1,7 @@
 {
-  "name": "Nextbus Extension",
-  "version": "0.5",
-  "description": "An Extension for Nextbus.",
+  "name": "Nextbus for Guelph Transit",
+  "version": "0.5.2.1",
+  "description": "An Extension for Nextbus - Guelph Transit.",
   "browser_action": {
     "default_icon": "/image/icon.png",
 	"popup": "nextbus.html"
