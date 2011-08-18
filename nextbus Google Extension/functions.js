@@ -164,6 +164,14 @@ function changePredictions (element, prediction) {
 		
 		document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
 		chrome.browserAction.setBadgeText({text: prediction});
+		
+		if (prediction <= 5) {
+			chrome.browserAction.setBadgeBackgroundColor({color:[255, 0, 0, 255]});
+		}
+		
+		else {
+			chrome.browserAction.setBadgeBackgroundColor({color:[0, 0, 255, 255]});
+		}
 	}
 	
 	else {
@@ -171,6 +179,8 @@ function changePredictions (element, prediction) {
 				document.getElementById(element).innerHTML = "";
 				document.getElementById("predictionFirstMinute").innerHTML = "";
 				document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
+				chrome.browserAction.setBadgeText({text: "Arrv"});
+				chrome.browserAction.setBadgeBackgroundColor({color:[255, 0, 0, 255]});
 	}
 	
 
