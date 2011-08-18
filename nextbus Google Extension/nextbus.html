@@ -11,7 +11,7 @@ Description: A basic nextbus google extension
 	<head>
 		<title>Nextbus Google Extension</title>
 		
-		<meta http-equiv="refresh" content="20" > 
+<!--		<meta http-equiv="refresh" content="20" > !-->
 		
 		<link rel="stylesheet", type="text/css", href="style.css">
 				
@@ -19,11 +19,7 @@ Description: A basic nextbus google extension
 
 	<body> 
 		<div id="header">Guelph NextBus</div>
-		
-<!--		<div id="message">
-			Loading...
-		</div>
-!-->		
+	
 		<form name="boxForm">
 			<div id="boxArea">
 				<span>Route</span>
@@ -45,77 +41,83 @@ Description: A basic nextbus google extension
 			</div> 
 		</form>
 		
-
-		<form name="tableForm" >
-			<table id="predictionArea" border="0", cellspacing="0", align="center">
+		<div id="content">
+			<form name="tableForm" >
+				<table id="predictionArea" border="0", cellspacing="0", align="center">
+				
+					<tr>
+							<td id="arriving" colspan=2></td>
+					</tr>
+					<tr>
+						<td id="predictionFirst">Loading...</td>
+						<td id="predictionFirstMinute" tag="predictionFirstMinute"></td>
+					</tr>
+					
+					<tr>
+						<td id="predictionSecond"></td>
+						<td id="predictionSecondMinute"></td>
+					</tr></table>
+			</form>
 			
-				<tr>
-						<td id="arriving" colspan=2></td>
-				</tr>
-				<tr>
-					<td id="predictionFirst">Loading...</td>
-					<td id="predictionFirstMinute" tag="predictionFirstMinute"></td>
-				</tr>
-				
-				<tr>
-					<td id="predictionSecond"></td>
-					<td id="predictionSecondMinute"></td>
-				</tr></table>
-		</form>
-		
-		<img src="/image/refresh.png" height="20" width="20" id="refresh" 
-				onmouseover="this.src='/image/refresh1.png'"
-				onmouseout="this.src='/image/refresh.png'"
-				onclick="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex])"></div>
+			<img src="/image/refresh.png" height="20" width="20" id="refresh" 
+					onmouseover="this.src='/image/refresh1.png'"
+					onmouseout="this.src='/image/refresh.png'"
+					onclick="getPrediction(route, route.tag[routeBox.selectedIndex], route.stop[stopBox.selectedIndex])"></div>
 
-		<script type="text/javascript", language="JavaScript", src="functions.js"></script>
-		
-				
-		<script type="text/javascript", language="JavaScript">
-			var route = {
-				agency:[],
-				title:[],
-				tag:[], 
-				direction:[],
-				stop:[],
-				stopName:[],
-				prediction:[]
-				};
+			<script type="text/javascript", language="JavaScript", src="functions.js"></script>
+			
+					
+			<script type="text/javascript", language="JavaScript">
+				var route = {
+					agency:[],
+					title:[],
+					tag:[], 
+					direction:[],
+					stop:[],
+					stopName:[],
+					prediction:[]
+					};
 
-			/* Credits for function go to http://diveintohtml5.org/storage.html*/
-			function supports_html5_storage() {
-				try {
-					return 'localStorage' in window && window['localStorage'] !== null;
-				} catch (e) {
-					return false;
+				/* Credits for function go to http://diveintohtml5.org/storage.html*/
+				function supports_html5_storage() {
+					try {
+						return 'localStorage' in window && window['localStorage'] !== null;
+					} catch (e) {
+						return false;
+						}
+				}
+				
+				function setNewLocalData() {
+					if (supports_html5_storage) {
+						localStorage.route = document.boxForm.routeBox.options.selectedIndex;
+						localStorage.direction = document.boxForm.directionBox.options.selectedIndex;
+						localStorage.stop = document.boxForm.stopBox.options.selectedIndex;
 					}
-}
-			function setNewLocalData() {
-				if (supports_html5_storage) {
-					localStorage.route = document.boxForm.routeBox.options.selectedIndex;
-					localStorage.direction = document.boxForm.directionBox.options.selectedIndex;
-					localStorage.stop = document.boxForm.stopBox.options.selectedIndex;
 				}
-			}
-			
-			if (supports_html5_storage) {
-				if(localStorage.route == null) {
-					localStorage.route='0';
-				}
-
-				if(localStorage.direction == null) {
-					localStorage.direction='0';
-				}
-
-				if(localStorage.stop == null) {
-					localStorage.stop='0';
-				}
-			}
 				
-			getRoute(route, localStorage.route, localStorage.direction, localStorage.stop);		
+				function start() {
+					getRoute(route, localStorage.route, localStorage.direction, localStorage.stop);		
+				}
+				
+				if (supports_html5_storage) {
+					if(localStorage.route == null) {
+						localStorage.route='0';
+					}
 
-			
-		</script>
+					if(localStorage.direction == null) {
+						localStorage.direction='0';
+					}
+
+					if(localStorage.stop == null) {
+						localStorage.stop='0';
+					}
+				}
+					
+				setTimeout(start, 40);
+				setInterval(start , 20000);
+				
+			</script>
+		</div>
 
 	</body>
 

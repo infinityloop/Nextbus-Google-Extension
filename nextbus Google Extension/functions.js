@@ -1,18 +1,39 @@
+var total = 0;
+
 function loadXMLDoc(dname) {
 
 	if (window.XMLHttpRequest)
 	{
-		xhttp=new XMLHttpRequest();
+		xhttp=new XMLHttpRequest();  
 	}
 	else
 	{
 		xhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
+	
+	xhttp.addEventListener("load", onTransferComplete, false);  
+	xhttp.addEventListener("error", onTransferFailed, false);  
+	xhttp.addEventListener("abort", onTransferFailed, false);
+	
 	xhttp.open("GET",dname,false);
 	xhttp.send();
 	return xhttp.responseXML;
-}	
+}
 
+
+function onTransferFailed(e) { 
+	alert("Error: Unable to establish connection with nextbus.");  
+}  
+
+function onTransferComplete(e) {  
+	total++;
+	if (total >= 4)
+	{
+		//alert ("complete");
+		document.getElementById('message').style.visibility = 'hidden'; 
+		document.getElementById('content').style.visibility = 'visible'; 
+	}
+} 
 
 function getRoute(route, index, directionIndex, stopIndex) {
 
@@ -136,12 +157,12 @@ function getPrediction (route, routeID, stop) {
 		}
 		
 //		document.write(route.prediction[0]);
-		changePredictions("predictionSecond", route.prediction[1]);
-		changePredictions("predictionFirst", route.prediction[0]);
+		changePredictions("predictionSecond", route.prediction[1], false);
+		changePredictions("predictionFirst", route.prediction[0], true);
 
 }
 
-function changePredictions (element, prediction) {
+function changePredictions (element, prediction, first) {
 
 	if (prediction==null) {
 		document.getElementById("arriving").innerHTML="Predictions Unavailabe";
@@ -163,14 +184,17 @@ function changePredictions (element, prediction) {
 		}
 		
 		document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
-		chrome.browserAction.setBadgeText({text: prediction});
 		
-		if (prediction <= 5) {
-			chrome.browserAction.setBadgeBackgroundColor({color:[255, 0, 0, 255]});
-		}
-		
-		else {
-			chrome.browserAction.setBadgeBackgroundColor({color:[0, 0, 255, 255]});
+		if(first) {
+			if (prediction <= 5) {
+				chrome.browserAction.setBadgeBackgroundColor({color:[200, 0, 0, 255]});
+			}
+			
+			else {
+				chrome.browserAction.setBadgeBackgroundColor({color:[0, 90, 0, 255]});
+			}
+			
+			chrome.browserAction.setBadgeText({text: prediction});
 		}
 	}
 	
@@ -179,8 +203,10 @@ function changePredictions (element, prediction) {
 				document.getElementById(element).innerHTML = "";
 				document.getElementById("predictionFirstMinute").innerHTML = "";
 				document.getElementById("predictionSecondMinute").innerHTML = "Minutes";
-				chrome.browserAction.setBadgeText({text: "Arrv"});
-				chrome.browserAction.setBadgeBackgroundColor({color:[255, 0, 0, 255]});
+				if(first) {
+					chrome.browserAction.setBadgeBackgroundColor({color:[255, 0, 0, 255]});
+					chrome.browserAction.setBadgeText({text: "Arrv"});
+				}
 	}
 	
 
