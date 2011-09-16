@@ -1,29 +1,43 @@
 body{	
 	width:200px;
-	overflow-x:hidden;
-	overflow-y:hidden;
+	overflow:hidden;
 	height:350px;
-	margin:0;
+	margin:3;
 	padding:0;
+	font-family: sans-serif;
 }
 
 #header{
 	text-align:center;
-	font:25px sans-serif;
+	font:20px sans-serif;
 	color:#FFF;
-	background:#104510;
+	background:#426175;
 	background-repeat:repeat-x;
+	overflow:hidden;
+	margin:0;
+	padding:0;
 }
+
+#optionArea{
+	position:relative;
+	padding-top:5px;
+	width:100%;
+	height:85%;
+	background:#FFF;
+	overflow:hidden;
+}	
 
 #boxArea {
 	position:relative;
 	width:100%;
-	height:50%;
-	padding-top:10px;
+	height:45%;
+	padding-top:0px;
+	overflow:hidden;
 }
 
 #gap {
 	padding-top:10px;
+	overflow:hidden;
 }
 
 #selectBox {
@@ -32,12 +46,27 @@ body{
 	overflow:hidden;
 }
 
+#homeArea{
+	position:relative;
+	width:100%;
+++	height:17%;
+	margin-top:-1;
+	overflow:hidden;
+}
+
+#homeAreaButtons {
+	position:relative;
+	width:100%;
+	text-align:center;
+	overflow:hidden;
+}
+
 #predictionTable {
 	position:relative;
 	width:100%;
-	height:35%;
-	background-color:blue;
-	padding-top:10px;
+++	height:5%;
+	margin-top:-1;
+	overflow:hidden;
 }
 
 #predictionFirst {
@@ -47,6 +76,7 @@ body{
 	color:#000;
 	padding-left:15px;
 	vertical-align:bottom;
+	overflow:hidden;
 }
 
 #predictionSecond {
@@ -57,6 +87,7 @@ body{
 	line-height:0.8em;
 	padding-left:15px;
 	padding-bottom:10px;
+	overflow:hidden;
 }
 
 #predictionFirstMinute {
@@ -69,6 +100,7 @@ body{
 	padding-left:10px;
 	padding-right:10px;
 	padding-bottom:10px;
+	overflow:hidden;
 }
 
 #predictionSecondMinute {
@@ -81,17 +113,18 @@ body{
 	padding-left:10px;
 	padding-right:10px;
 	padding-bottom:10px;
+	overflow:hidden;
 }
 
-#arriving {
+#status {
 	text-align:center;
 	font:32px sans-serif;
 	font-weight:bold;
 	color:#000;
 	line-height:0.8em;
 	vertical-align:bottom;
-	padding-bottom:10px;
-
+	padding-bottom:5px;
+	overflow:hidden;
 }
 
 #refresh {
@@ -100,4 +133,41 @@ body{
 	left:0;
 	width:20px;
 	height:20px;
+	overflow:hidden;
+}
+
+#livemap {
+	position:absolute;
+	bottom:0;
+	left:22;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+}
+
+#home {
+	position:absolute;
+	bottom:0;
+	left:44;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+}
+
+#nohome {
+	position:absolute;
+	bottom:0;
+	left:44;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+}
+
+#option {
+	position:absolute;
+	bottom:0;
+	right:0;
+	width:20px;
+	height:20px;
+	overflow:hidden;
 }
