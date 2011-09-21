@@ -1,0 +1,31 @@
+#contact {
+
+}
+
+.contactInput {
+	margin:0;
+}
+
+.contactForm {
+	width:50%;
+
+}
+
+.contactInfo {
+	position:relative;
+	width:30%;
+	vertical-align:top;
+	text-align:left;
+	background-color:#DDDDDD;
+
+}
+
+.contactText {
+	margin-top:20px;
+	margin-left:20px;
+	
+}
+
+.sendButton {
+
+}
