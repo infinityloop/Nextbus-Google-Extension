@@ -4,6 +4,7 @@ body{
 	text-align:center;
 	margin-left:15%;
 	margin-right:15%;
+	min-width: 1000px;
 }
 
 #header {
@@ -16,6 +17,7 @@ body{
 	border-bottom-style:dotted;
 	border-width: 1px ;
 	border-color: #AAAAAA;
+	text-align:left;
 }
 
 .nameURL {
@@ -24,6 +26,11 @@ body{
 	color:#EE0000;
 	text-decoration:none;
 	text-align:left;
+}
+
+.nameURL:hover {
+	color:#550000;
+	text-decoration:none;
 }
 
 .menu {
@@ -45,43 +52,60 @@ body{
 
 .link:hover {
 	color:#EE0000;
+	text-decoration:none;
+}
+
+.linkHeader {
+	color:#000000;
+	text-decoration:none;
+	font-size:200%;
+	line-height:140%;
+}
+
+.linkHeader:hover {
+	color:#8B8970;
+	text-decoration:none;
 }
 
 #content {
 	margin-top:50px;
 	text-align:left;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+
+.leftContent {
+	position:relative;
+	float:left;
+	margin:auto;
+	width:60%;
+}
+
+.rightcontent {
+	position:relative;
+	float:right;
+	margin: auto;
+	width:40%;
 }
 
 .contentTable {
-	width:100%
+	width:100%;
 }
 
-.contactInput {
-	margin:0;
+.aboutImageLeft {
+	float:left; 
+	margin-right:20px;
+	margin-bottom: 10px;
+	margin-top: 3px;
 }
 
-.contactForm {
-	width:50%;
-
-}
-
-.contactInfo {
-	position:relative;
-	width:30%;
-	vertical-align:top;
-	text-align:left;
-	background-color:#DDDDDD;
-
-}
-
-.contactText {
-	margin-top:20px;
+.aboutImageRight {
+	float:right; 
 	margin-left:20px;
-	
-}
-
-.sendButton {
-
+	margin-bottom: 10px;
+	margin-top: 3px;
 }
 
 #h1 {
@@ -91,19 +115,77 @@ body{
 }
 
 #footer {
-
+	width:100%;
 }
 
-.footerTable {
+.push {
+	height:4em;
+}
+
+.footer{
 	margin-top:50px;
 	border-top-style:dotted;
 	border-top-width: 1px ;
 	border-top-color:#AAAAAA;
+	text-align:center;
+	height: 4em;
 }
 
 .copyright{
+	float:right;  
 	font-size:70%;
 	font-weight:lighter;
 	color:#AAAAAA;
+}
 
+.footerLink {
+	float:left;  
+	font-size:70%;
+	font-weight:lighter;
+	color:#AAAAAA;
+}
+
+.highlight {
+    border:2px solid #9F1319;
+    background:url(images/iconCaution.gif) no-repeat 2px
+}
+
+.slides_container {
+	width:333px;
+	height:499px;
+	display:none;
+}
+
+.slideItem {
+	float:left;
+	width:333px;
+	height:499px;
+	margin:0 10px;
+	background:#efefef;
+}
+
+.about_container {
+	width:200px;
+	height:299px;
+	display:none;
+}
+
+.aboutItem {
+	float:right;
+	width:200px;
+	height:299px;
+	margin:0 10px;
+	background:#efefef;
+}
+
+a {
+	color: 
+	#08C;
+	text-decoration: none;
+}
+
+a:hover {
+	color: 
+	#005580;
+	text-decoration: underline;
 }

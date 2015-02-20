@@ -1,0 +1,83 @@
+#contact {
+
+}
+
+#contactForm {
+	width:50%;
+
+}
+
+#contactForm input {
+	margin:0;
+}
+
+#contactForm input.error{  
+    background: #f8dbdb;  
+    border-color: #e77776;  
+}  
+
+#contactForm div{
+	margin:0;
+}
+
+#contactForm div textarea.error{
+	color:#e46c6e;
+	border-color:#e46c6e;
+	background: #f8dbdb;  
+}
+
+#contactForm div span.error{
+	color:#e46c6e;
+}
+.contactText {
+	margin-top:20px;
+	margin-left:20px;
+	
+}
+
+.sendButton {
+
+}
+
+#nameInfo {
+	font-size:80%;
+	color:#B1B1B1;
+	font-style:italic;
+}
+
+#emailInfo {
+	font-size:80%;
+	color:#B1B1B1;
+	font-style:italic;
+}
+
+#subjectInfo {
+	font-size:80%;
+	color:#B1B1B1;
+	font-style:italic;
+}
+
+
+#contactInfo {
+	width:40%;
+	position:relative;
+	vertical-align:top;
+	text-align:left;
+	background-color:#EBE6C7;
+}
+
+#Success {
+	width: 100%;
+	position: relative;
+	text-align:left;
+	color:#1AA34C;
+	padding-bottom: 10px;
+}
+
+#thanks {
+	position:relative;
+	text-align:center;
+	font-size:200%;
+	font-style:bold;
+	padding-top: 100px;
+}

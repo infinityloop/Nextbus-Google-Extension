@@ -1,24 +1,14 @@
-<html>
+<div id="header">
+	<table class="table">
+		<tr>
+			<td ><a href="../" class="nameURL"><span style="font-weight:bold;">InfinityLoop</span>.ca</a></td>
+				<td class = "menuItem"><a class="link" href="/blog/"> Blog</a></td>
+				<td class="menuItem"><a class="link" href="/about/"> About</a></td>
+				<td class="menuItem"><a class="link" href="/resume/">Resume</a></td>
+				<td class="menuItem"><a class="link" href="/projects/">Projects</a></td>
+				<td class="menuItem"><a class="link" href="/contact/">Contact</a></td>
+		</tr>
 
-	<head>
-
-	<title>KLau.ca</title>
-
-	</head>
-	<body>
-		<div id="header", border="0", cellspacing="0", align="left">
-			<table class="table">
-				<tr>
-					<td ><span style="font-weight:bold;"><a href="index.php" class="nameURL"> KLau</span>.ca</a></td>
-					<td class="menu">
-						<td class="menuItem"><a class="link" href="about.php"> About me</a></td>
-						<td class="menuItem"><a class="link" href="resume.php">Resume</a></td>
-						<td class="menuItem"><a class="link" href="projects.php">Projects</a></td>
-						<td class="menuItem"><a class="link" href="contact.php">Contact me</a></td>
-					</td>
-				</tr>
-
-			</table>
-		</div>
-	</body>
-</html>		
+	</table>
+</div>
+	
